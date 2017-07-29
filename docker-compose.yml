@@ -1,0 +1,18 @@
+version: '2'
+
+volumes:
+  data:
+    driver: 'local'
+
+services:
+  samba:
+    image: dperson/samba
+    container_name: samba
+    ports:
+      - "139:139"
+      - "445:445"
+    volumes:
+      - data:/mnt/pub
+    command:
+      "-s pub;/mnt/pub;no;no;no;foo -u foo;bar"
+
