@@ -12,7 +12,14 @@ services:
       - "139:139"
       - "445:445"
     volumes:
-      - data:/mnt/pub
-    command:
-      "-s pub;/mnt/pub;no;no;no;foo -u foo;bar"
+      - data:/mnt/work
+    command: "-s work;/mnt/work;no;no;no;foo -u foo;bar"
+
+  python:
+    image: ujiro99/python
+    container_name: python
+    tty: true
+    volumes:
+      - data:/mnt/work
+    command: "/bin/sh"
 
