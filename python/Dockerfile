@@ -28,6 +28,7 @@ RUN ./configure \
         --with-python3-config-dir=/usr/lib/python3.5/config
 RUN make VIMRUNTIMEDIR=/usr/local/share/vim/vim80
 RUN make install
+RUN rm -rf vim
 
 RUN chmod a+x /usr/share/doc/git/contrib/diff-highlight/diff-highlight
 RUN apt-get install tig less -y
@@ -36,12 +37,14 @@ RUN apt-get install tig less -y
 WORKDIR /mnt/work
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
+RUN rm requirements.txt
 
 # ssh
 WORKDIR /root
 Add .ssh .ssh
 Add ssh.sh ssh.sh
 RUN ./ssh.sh
+RUN rm ssh.sh
 
 # my settings
 RUN git clone git@github.com:ujiro99/dotfiles.git
@@ -49,4 +52,5 @@ WORKDIR /root/dotfiles
 RUN ./setup.linux.sh
 RUN git submodule init
 RUN git submodule update
+
 WORKDIR /root
