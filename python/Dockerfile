@@ -42,3 +42,11 @@ WORKDIR /root
 Add .ssh .ssh
 Add ssh.sh ssh.sh
 RUN ./ssh.sh
+
+# my settings
+RUN git clone git@github.com:ujiro99/dotfiles.git
+WORKDIR /root/dotfiles
+RUN ./setup.linux.sh
+RUN git submodule init
+RUN git submodule update
+WORKDIR /root
