@@ -21,5 +21,11 @@ services:
     tty: true
     volumes:
       - data:/mnt/work
+      - /home/docker/downloads:/mnt/downloads
+      - /home/docker/share:/mnt/share
+      - /home/docker/src:/mnt/src
+      - /home/docker/tmp:/mnt/tmp
+      - /home/docker/src/.gitconfig.local:/root/.gitconfig.local
+      - /home/docker/.bashrc.local:/root/.bashrc.local
     command: "/bin/sh"
 
