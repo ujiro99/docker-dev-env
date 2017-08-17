@@ -7,7 +7,7 @@ volumes:
 services:
   samba:
     image: dperson/samba
-    container_name: samba
+    container_name: dev_samba
     ports:
       - "139:139"
       - "445:445"
@@ -17,7 +17,7 @@ services:
 
   python:
     image: ujiro99/python
-    container_name: python
+    container_name: dev_python
     tty: true
     volumes:
       - data:/mnt/work
