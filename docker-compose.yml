@@ -13,7 +13,7 @@ services:
       - "445:445"
     volumes:
       - data:/mnt/work
-    command: "-s work;/mnt/work;no;no;no;foo -u foo;bar"
+    command: "-s work;/mnt/work;yes;yes;yes;foo;foo;foo -u foo;bar"
 
   python:
     image: ujiro99/python
