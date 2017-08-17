@@ -37,3 +37,8 @@ WORKDIR /mnt/work
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
+# ssh
+WORKDIR /root
+Add .ssh .ssh
+Add ssh.sh ssh.sh
+RUN ./ssh.sh
