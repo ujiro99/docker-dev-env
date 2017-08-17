@@ -30,8 +30,9 @@ RUN make VIMRUNTIMEDIR=/usr/local/share/vim/vim80
 RUN make install
 RUN rm -rf vim
 
+# other packages
 RUN chmod a+x /usr/share/doc/git/contrib/diff-highlight/diff-highlight
-RUN apt-get install tig less -y
+RUN apt-get install tig less zip pv -y
 
 # python packages
 WORKDIR /mnt/work
