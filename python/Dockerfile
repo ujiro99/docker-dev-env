@@ -47,6 +47,14 @@ Add ssh.sh ssh.sh
 RUN ./ssh.sh
 RUN rm ssh.sh
 
+# enables japanese
+RUN apt-get install locales -y
+RUN locale-gen ja_JP.UTF-8
+ENV LANG ja_JP.UTF-8
+ENV LC_CTYPE ja_JP.UTF-8
+ENV LC_ALL ja_JP.UTF-8
+RUN localedef -f UTF-8 -i ja_JP ja_JP.utf8
+
 # my settings
 RUN git clone git@github.com:ujiro99/dotfiles.git
 WORKDIR /root/dotfiles
