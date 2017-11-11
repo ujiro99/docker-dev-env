@@ -28,6 +28,7 @@ RUN ./configure \
         --with-python3-config-dir=/usr/lib/python3.5/config
 RUN make VIMRUNTIMEDIR=/usr/local/share/vim/vim80
 RUN make install
+WORKDIR /root
 RUN rm -rf vim
 
 # other packages
@@ -59,7 +60,8 @@ RUN localedef -f UTF-8 -i ja_JP ja_JP.utf8
 RUN git clone git@github.com:ujiro99/dotfiles.git
 WORKDIR /root/dotfiles
 RUN ./setup.linux.sh
-RUN git submodule init
-RUN git submodule update
+WORKDIR /root/dotfiles/vimfiles/pack/minpac/opt
+RUN git clone https://github.com/k-takata/minpac.git
+RUN vim -c 'PackUpdate' -c 'qall!'
 
 WORKDIR /root
