@@ -1,27 +1,12 @@
 version: '2'
 
-volumes:
-  data:
-    driver: 'local'
-
 services:
-  samba:
-    image: dperson/samba
-    container_name: samba
-    ports:
-      - "139:139"
-      - "445:445"
-    volumes:
-      - data:/mnt/work
-      - /home/docker/tmp:/mnt/tmp
-    command: "-s work;/mnt/work;yes;yes;yes;foo;foo;foo -u foo;bar"
 
   python:
     image: ujiro99/python
     container_name: python
     tty: true
     volumes:
-      - data:/mnt/work
       - /home/docker/src:/mnt/src
       - /home/docker/tmp:/mnt/tmp
       - /home/docker/src/.gitconfig.local:/root/.gitconfig.local
