@@ -2,6 +2,15 @@ version: '2'
 
 services:
 
+  jenkins:
+    image: jenkins/jenkins:2.98-alpine
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+    volumes:
+      - /home/docker/src:/mnt/src
+      - /home/docker/src/github.com/ujiro99/docker_dev/env/jenkins:/var/jenkins_home
+
   python:
     image: ujiro99/python
     container_name: python
