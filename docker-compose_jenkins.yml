@@ -2,17 +2,6 @@ version: '2'
 
 services:
 
-  python:
-    image: ujiro99/python
-    container_name: python
-    tty: true
-    volumes:
-      - /home/docker/src:/mnt/src
-      - /home/docker/tmp:/mnt/tmp
-      - /home/docker/src/.gitconfig.local:/root/.gitconfig.local
-      - /home/docker/src/.bashrc.local:/root/.bashrc.local
-    command: "/bin/sh"
-
   jenkins:
     image: ujiro99/cpp:latest
     container_name: jenkins
@@ -26,12 +15,3 @@ services:
       - /home/docker/src/github.com/ujiro99/docker-dev-env/jenkins:/var/jenkins_home
       - /home/docker/src/.gitconfig.local:/root/.gitconfig.local
       - /home/docker/src/.bashrc.local:/root/.bashrc.local
-
-  gcc:
-    image: gcc:7
-    container_name: gcc
-    tty: true
-    volumes:
-      - /home/docker/src:/src
-    command: "/bin/sh"
-
