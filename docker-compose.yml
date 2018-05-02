@@ -13,32 +13,22 @@ services:
       - /home/docker/src/.bashrc.local:/root/.bashrc.local
     command: "/bin/sh"
 
-  jenkins:
-    image: ujiro99/cpp:latest
-    container_name: jenkins
+  cpp:
+    image: ujiro99/cpp
+    container_name: cpp
     tty: true
-    ports:
-      - "8080:8080"
-      - "50000:50000"
     volumes:
       - /home/docker/src:/mnt/src
-      - /home/docker/tmp:/mnt/tmp
-      - /home/docker/src/github.com/ujiro99/docker-dev-env/jenkins:/var/jenkins_home
       - /home/docker/src/.gitconfig.local:/root/.gitconfig.local
       - /home/docker/src/.bashrc.local:/root/.bashrc.local
-
-  gcc:
-    image: gcc:7
-    container_name: gcc
-    tty: true
-    volumes:
-      - /home/docker/src:/src
-    command: "/bin/sh"
+    command: "/bin/bash"
 
   go:
     image: golang:1.10.1-alpine3.7
     container_name: go
     tty: true
     volumes:
-      - /home/docker/src:/src
+      - /home/docker/src:/mnt/src
+      - /home/docker/src/.gitconfig.local:/root/.gitconfig.local
+      - /home/docker/src/.bashrc.local:/root/.bashrc.local
     command: "/bin/sh"

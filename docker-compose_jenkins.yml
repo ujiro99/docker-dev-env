@@ -3,7 +3,7 @@ version: '2'
 services:
 
   jenkins:
-    image: ujiro99/cpp:latest
+    image: ujiro99/jenkins:latest
     container_name: jenkins
     tty: true
     ports:
