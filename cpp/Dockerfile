@@ -1,26 +1,27 @@
-FROM jenkins/jenkins:2.99-alpine
+FROM alpine:3.7
 
 MAINTAINER ujiro99 <siro.cola@gmail.com>
 
-USER root
 RUN apk --update add \
-    gcc g++ musl-dev make \
+    bash bash-completion \
     clang \
-    doxygen \
-    graphviz \
     cppcheck \
-    gcovr \
-    vim \
-    tmux \
     ctags \
-    global --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted \
+    gcc g++ musl-dev make \
+    git git-bash-completion \
+    openssh-client \
+    tmux \
+    vim \
+  && apk add global --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted \
   && rm -rf /var/lib/apt/lists/*
 
-USER jenkins
+# ssh
+WORKDIR /root
+Add .ssh .ssh
+Add ssh.sh ssh.sh
+RUN ./ssh.sh && rm ssh.sh
 
 # my settings
-RUN cd ~ \
-    && git clone https://github.com/ujiro99/dotfiles.git \
-    && cd ~/dotfiles \
-    && ./setup.linux.sh
+RUN git clone git@github.com:ujiro99/dotfiles.git
+RUN ./dotfiles/setup.linux.sh
 
