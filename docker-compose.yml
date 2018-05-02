@@ -35,3 +35,10 @@ services:
       - /home/docker/src:/src
     command: "/bin/sh"
 
+  go:
+    image: golang:1.10.1-alpine3.7
+    container_name: go
+    tty: true
+    volumes:
+      - /home/docker/src:/src
+    command: "/bin/sh"
