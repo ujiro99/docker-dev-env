@@ -60,8 +60,5 @@ RUN localedef -f UTF-8 -i ja_JP ja_JP.utf8
 RUN git clone git@github.com:ujiro99/dotfiles.git
 WORKDIR /root/dotfiles
 RUN ./setup.linux.sh
-WORKDIR /root/dotfiles/vimfiles/pack/minpac/opt
-RUN git clone https://github.com/k-takata/minpac.git
-RUN vim -c 'PackUpdate' -c 'qall!'
 
 WORKDIR /root
