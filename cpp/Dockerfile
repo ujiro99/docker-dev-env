@@ -11,7 +11,9 @@ RUN apk --update add \
     git git-bash-completion \
     openssh-client \
     tmux \
+    tig \
     vim \
+    the_silver_searcher \
   && apk add global --update-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted \
   && rm -rf /var/lib/apt/lists/*
 

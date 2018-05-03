@@ -7,8 +7,8 @@ services:
     container_name: python
     tty: true
     volumes:
-      - /home/docker/src:/mnt/src
-      - /home/docker/tmp:/mnt/tmp
+      - /home/docker/src:/root/src
+      - /home/docker/tmp:/root/tmp
       - /home/docker/src/.gitconfig.local:/root/.gitconfig.local
       - /home/docker/src/.bashrc.local:/root/.bashrc.local
     command: "/bin/sh"
@@ -18,7 +18,7 @@ services:
     container_name: cpp
     tty: true
     volumes:
-      - /home/docker/src:/mnt/src
+      - /home/docker/src:/root/src
       - /home/docker/src/.gitconfig.local:/root/.gitconfig.local
       - /home/docker/src/.bashrc.local:/root/.bashrc.local
     command: "/bin/bash"
@@ -28,7 +28,7 @@ services:
     container_name: go
     tty: true
     volumes:
-      - /home/docker/src:/mnt/src
+      - /home/docker/src:/root/src
       - /home/docker/src/.gitconfig.local:/root/.gitconfig.local
       - /home/docker/src/.bashrc.local:/root/.bashrc.local
     command: "/bin/sh"
